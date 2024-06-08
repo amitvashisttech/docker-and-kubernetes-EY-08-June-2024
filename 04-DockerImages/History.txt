@@ -1,0 +1,34 @@
+  184  cd 04-DockerImages/
+  186  mkdir apache/v1 -p
+  187  cd apache/v1/
+  189  vim Dockerfile
+  190  docker images
+  191  vim Dockerfile
+
+
+  193  docker build myapache
+  194  docker build myapache:v1 .
+  195  docker build -t  myapache:v1 .
+  196  docker images
+  
+  214  docker run -d --name apache-test-3 myapache:v1
+  215  docker ps
+  216  docker images
+  
+  217  docker rmi 1836bc2c1899
+  226  docker rm $(docker ps -a | grep -v Up | awk -F" " '{print $1}' | grep -v CONTAINER)
+  227  docker ps -a
+  228  docker images
+  229  docker rmi 1836bc2c1899
+  230  docker images
+  231  docker rmi 723c3022ce62
+  232  docker images
+  233  docker ps
+  234  docker inspect --format '{{.Name}} - {{.State.Running}} - {{.NetworkSettings.IPAddress}}' $(docker ps -qa)
+  235  curl 172.17.0.7
+  236  curl 172.17.0.7:80
+  237  curl 172.17.0.7:8080
+  238  docker ps
+  239  docker inspect --format '{{.Name}} - {{.State.Running}} - {{.NetworkSettings.IPAddress}}' $(docker ps -qa)
+  240  curl 172.17.0.4
+
