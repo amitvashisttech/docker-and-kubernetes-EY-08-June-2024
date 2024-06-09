@@ -42,98 +42,96 @@ Here's a quick look at some Docker commands related to volumes:
 ```sh
 docker volume create my-vol
 docker volume ls
+```
 
 Running Containers with Volumes
-
-    Run a container with a new volume:
-
-    sh
-
+```
 docker run --name vol-1 -it -v /var/myvol1 ubuntu
-
+```
 Run a container with an existing volume:
 
 sh
-
+```
 docker run --name vol-2 -it -v my-vol:/myapp ubuntu
-
+```
 Run a container with multiple volumes:
 
 sh
-
+```
 docker run --name vol-2 -it -v /var/myvol1 -v /var/amit -v /var/test ubuntu
-
+```
 Run a container sharing volumes from another container:
 
 sh
-
+```
     docker run --name vol-3 -it --volumes-from vol-2 ubuntu
-
+```
 Inspecting and Managing Volumes
 
     Inspect a volume:
 
     sh
-
+```
 docker volume inspect my-vol
-
+```
 List all volumes:
 
 sh
-
+```
 docker volume ls
-
+```
 Remove all volumes:
 
 sh
-
-    docker volume rm $(docker volume ls -q)
-
+```
+   docker volume rm $(docker volume ls -q)
+```
 Using Data Volumes
 
     Navigate to Docker volumes directory:
 
     sh
-
+```
 cd /var/lib/docker/volumes/
-
+```
 Inspect volume data:
 
 sh
-
+```
 cat /var/lib/docker/volumes/<volume_id>/_data/hello.txt
+```
 
 Interact with files in the volume:
 
 sh
-
+```
 docker exec -it vol-2 cat /var/amit/hello.txt
-
+```
 Run a container with a read-only volume:
 
 sh
-
+```
     docker run --name vol-8 -it -v /root/new:/myapp:ro ubuntu
-
+```
 Volume Mount Permissions
 
     Run a container with a bind mount:
 
     sh
-
+```
     docker run --name vol-7 -it -v /root/new:/myapp ubuntu
-
+```
 Cleaning Up
 
-    Stop and remove all running containers:
+Stop and remove all running containers:
 
-    sh
-
+```
 docker kill $(docker ps -q)
 docker rm $(docker ps -qa)
-
+```
 Remove all volumes:
 
-sh
 
+```
 docker volume rm $(docker volume ls -q)
+```
