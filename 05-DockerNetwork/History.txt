@@ -1,0 +1,30 @@
+  
+  424  docker kill $(docker ps -q) 
+  455  docker network ls
+  456  docker network inspect 7daccc782664
+  457  docker ps
+  458  docker network ls
+
+  425  docker ps
+  426  docker images
+  427  docker run -d --name job2 -p 8080:80  myapache:v5
+  428  docker ps
+  429  apt-get install net-tools -y
+  430  netstat -tulnp
+  431  curl 10.4.0.178:8080
+  432  systemctl status docker
+  433  docker run -d --name job3 -p 8080:80  myapache:v5
+  434  docker run -d --name job4 -p 8081:80  myapache:v5
+  435  docker ps
+  436  docker run -d --name job5 -P  myapache:v1
+  437  docker ps
+  438  docker run -d --name job6 -P  myapache:v5
+  439  docker ps
+  440  systemctl status docker
+  441  curl 10.4.0.178:32768
+  442  ls
+  443  docker run -d --name job7 -P  myapache:v4
+  444  docker ps
+  445  docker run -d --name job8 -P  myapache:v3
+  446  docker ps
+
