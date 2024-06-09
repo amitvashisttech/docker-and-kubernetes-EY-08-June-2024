@@ -28,3 +28,46 @@
   445  docker run -d --name job8 -P  myapache:v3
   446  docker ps
 
+
+
+
+  467  docker kill $(docker ps -q)
+  469  docker network ls
+  470  docker ps
+  471  docker run -it ubuntu # apt-get update ; apt-get install net-tools -y 
+  472  Come Out : ctl p q 
+
+# Let's Create a Custom Image with Network Utils
+  473  docker commit -m "My Second Image" -p 0563f19dbaf0 mynetwork-ubuntu:v1
+  474  docker ps
+  475  docker images
+  476  docker kill dazzling_lamarr
+  477  ls
+  478  docker run -itd --name default-nw-1 mynetwork-ubuntu:v1
+  479  docker ps
+  480  docker network ls
+  481  docker run -itd --name host-nw-2 --network host mynetwork-ubuntu:v1
+  482  docker run -itd --name none-nw-3 --network none mynetwork-ubuntu:v1
+  483  docker ps
+  484  docker exec -it default-nw-1 ifconfig
+  485  docker exec -it host-nw-2 ifconfig
+  486  docker exec -it none-nw-3 ifconfig
+
+
+
+
+# Lets Create a Custom Network 
+
+  409  docker network ls
+  410  docker network create --help
+  411  docker network create --driver bridge --subnet 172.28.5.0/24 --gateway 172.28.5.1 mybr0
+  412  docker network ls
+  413  docker network inspect mybr0
+
+  487  docker run -itd --name mybr-nw-1 --network mybr0 mynetwork-ubuntu:v1
+  488  docker run -itd --name mybr-nw-2 --network mybr0 mynetwork-ubuntu:v1
+  489  docker exec -it mybr-nw-1 ifconfig
+  490  docker exec -it mybr-nw-2 ifconfig
+  491  ping -c2 172.28.5.2
+  492  ping -c2 172.28.5.3
+
