@@ -1,0 +1,23 @@
+  142  vim Dockerfile
+  143  ls
+  144  docker build -t myjenkins .
+  145  docker images
+  146  docker rmi b357e28b8f5c
+  147  docker images
+  148  docker build --no-cache -t myjenkins .
+  149  docker ps
+  150  docker images
+  151  docker run -d --name jenkins myjenkins
+  152  docker ps
+  153  curl 172.17.0.2:8080
+  154  ls
+  155  docker ps
+  156  docker run -d --name jenkins-2 -p 8080:8080 myjenkins
+  157  curl ifconfig.me
+  158  docker ps
+  159  docker logs -f jenkins-2
+  160  docker pull openjdk:11-jdk-slim
+  161  docker ps
+  162  docker images
+  163  ls
+
