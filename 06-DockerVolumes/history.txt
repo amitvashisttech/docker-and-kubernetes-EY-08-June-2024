@@ -1,0 +1,86 @@
+504  mkdir 06-DockerVolumes
+  505  ls
+  506  docker volumes ls
+  507  docker volume ls
+  508  docker ps
+  509  docker kill $(docker ps -q)
+  510  docker rm $(docker ps -q)
+  511  docker rm $(docker ps -qa)
+  512  ls
+  513  docker volume ls
+  514  docker volume ls -q
+  515  docker volume rm $(docker volume ls -q)
+  516  ls
+  517  docker volume ls
+  518  docker run --name vol-1 -it -v /var/myvol1 ubuntu
+  519  docker ps
+  520  docker inspect vol-1
+  521  cd /var/lib/docker/
+  522  ls
+  523  cd volumes/
+  524  ls
+  525  cd dfedf658ffb3c477cc993d010e69121fe42e9ac0aebc247c486bd4fa49562d1b
+  526  ;s
+  527  ls
+  528  cd _data/
+  529  ls
+  530  cat hello.txt
+  531  hostname -f
+  532  hostname >> hello.txt
+  533  date >> hello.txt
+  534  ls
+  535  cat hello.txt
+  536  docker ps
+  537  docker attach vol-1
+  538  ls
+  539  cd
+  540  ls
+  541  docker ps
+  542  docker ps -a
+  543  ls
+  544  docker rm vol-1
+  545  docker ps
+  546  docker ps -a
+  547  docker volume ls
+  548  docker volume inspect dfedf658ffb3c477cc993d010e69121fe42e9ac0aebc247c486bd4fa49562d1b
+  549  cat /var/lib/docker/volumes/dfedf658ffb3c477cc993d010e69121fe42e9ac0aebc247c486bd4fa49562d1b/_data/hello.txt
+  550  docker run --name vol-2 -it -v /var/myvol1 -v /var/amit -v /var/test ubuntu
+  551  docker ps
+  552  docker inspect vol-2
+  553  docker volume ls
+  554  ls -ltr /var/lib/docker/volumes/
+  555  df -h
+  556  docker ps
+  557  docker run --name vol-3 -it --volumes-from vol-2  ubuntu
+  558  docker ps
+  559  docker exec -it vol-2 cat /var/amit/hello.txt
+  560  docker exec -it vol-3 cat /var/amit/hello.txt
+  561  docker ps
+  562  history
+  563  docker run --name vol-4 -itd --volumes-from vol-2  ubuntu
+  564  docker ps
+  565  docker exec -it vol-2 cat /var/amit/hello.txt
+  566  docker exec -it vol-3 cat /var/amit/hello.txt
+  567  docker exec -it vol-4 cat /var/amit/hello.txt
+  568  docker volume ls
+  569  find /var/lib/docker/volumes/ -name hello.txt
+  570  cat /var/lib/docker/volumes/569bacab0ccfb80492fee80bd36b5cf100112ce3784fa3769731d7330dbb88c4/_data/hello.txt
+  571  cat /var/lib/docker/volumes/dfedf658ffb3c477cc993d010e69121fe42e9ac0aebc247c486bd4fa49562d1b/_data/hello.txt
+  572  docker run --name vol-5 -itd -v 569bacab0ccfb80492fee80bd36b5cf100112ce3784fa3769731d7330dbb88c4:/myapp  ubuntu
+  573  docker exec -it vol-5 ls /
+  574  docker exec -it vol-5 ls -ltr  /myapp
+  575  docker exec -it vol-5 ls cat   /myapp/hello.txt
+  576  docker exec -it vol-5 cat   /myapp/hello.txt
+  577  docker volume ls
+  578  docker volume create my-vol
+  579  docker volume ls
+  580  docker run --name vol-6 -itd -v my-vol:/myapp  ubuntu
+  581  docker exec -it vol-6 ls   /
+  582  ls
+  583  cd new/
+  584  ls
+  585  pwd
+  586  docker run --name vol-7 -it -v /root/new:/myapp  ubuntu
+  587  ls
+  588  docker run --name vol-8 -it -v /root/new:/myapp:ro  ubuntu
+
