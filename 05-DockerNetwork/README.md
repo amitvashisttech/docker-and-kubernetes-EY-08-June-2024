@@ -49,10 +49,8 @@ Here's a quick look at some Docker commands related to networking and custom ima
     docker network inspect 7daccc782664
 ```
 ### Running Containers with Published Ports
-
-    #### 1. Run a container with a specific port published:
-
-   
+#### 1. Run a container with a specific port published:
+  
 ```
 docker run -d --name job2 -p 8080:80 myapache:v5
 ```
@@ -94,7 +92,7 @@ docker commit -m "My Second Image" -p 0563f19dbaf0 mynetwork-ubuntu:v1
 
 ### Running Containers with Different Network Configurations
 
-    ### 1. Run a container with the default network:
+### 1. Run a container with the default network:
 ```
 docker run -itd --name default-nw-1 mynetwork-ubuntu:v1
 ```
@@ -117,9 +115,7 @@ docker run -itd --name none-nw-3 --network none mynetwork-ubuntu:v1
 ```
 
 ### Creating and Using Custom Networks
-
-    #### 1. Create a custom bridge network:
-
+#### 1. Create a custom bridge network:
     ```
     docker network create --driver bridge --subnet 172.28.5.0/24 --gateway 172.28.5.1 mybr0
     ```
