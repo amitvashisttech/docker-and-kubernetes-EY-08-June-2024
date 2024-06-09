@@ -78,7 +78,7 @@ apt-get install net-tools -y
 
 #### 2. Exit the container (detach without stopping):
 
-# Press Ctrl + P, followed by Ctrl + Q
+#### Press Ctrl + P, followed by Ctrl + Q
 
 #### 3. Commit the container as a new image:
 ```
