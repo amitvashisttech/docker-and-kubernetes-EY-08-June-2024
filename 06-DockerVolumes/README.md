@@ -44,93 +44,83 @@ docker volume create my-vol
 docker volume ls
 ```
 
-Running Containers with Volumes
+1. Running Containers with Volumes
 ```
 docker run --name vol-1 -it -v /var/myvol1 ubuntu
 ```
-Run a container with an existing volume:
+2. Run a container with an existing volume:
 
-sh
 ```
 docker run --name vol-2 -it -v my-vol:/myapp ubuntu
 ```
-Run a container with multiple volumes:
+3. Run a container with multiple volumes:
 
-sh
 ```
 docker run --name vol-2 -it -v /var/myvol1 -v /var/amit -v /var/test ubuntu
 ```
-Run a container sharing volumes from another container:
+4. Run a container sharing volumes from another container:
 
-sh
+
 ```
     docker run --name vol-3 -it --volumes-from vol-2 ubuntu
 ```
-Inspecting and Managing Volumes
-
-    Inspect a volume:
-
-    sh
+5. Inspecting and Managing Volumes
 ```
 docker volume inspect my-vol
 ```
-List all volumes:
+6. List all volumes:
 
-sh
 ```
 docker volume ls
 ```
-Remove all volumes:
+7. Remove all volumes:
 
-sh
+
 ```
    docker volume rm $(docker volume ls -q)
 ```
-Using Data Volumes
 
-    Navigate to Docker volumes directory:
+8. Using Data Volumes , Navigate to Docker volumes directory:
 
-    sh
 ```
 cd /var/lib/docker/volumes/
 ```
-Inspect volume data:
+9. Inspect volume data:
 
-sh
+
 ```
 cat /var/lib/docker/volumes/<volume_id>/_data/hello.txt
 ```
 
-Interact with files in the volume:
+10. Interact with files in the volume:
 
-sh
+
 ```
 docker exec -it vol-2 cat /var/amit/hello.txt
 ```
-Run a container with a read-only volume:
 
-sh
+11. Run a container with a read-only volume:
+
+
 ```
     docker run --name vol-8 -it -v /root/new:/myapp:ro ubuntu
 ```
-Volume Mount Permissions
 
-    Run a container with a bind mount:
+12. Volume Mount Permissions,  Run a container with a bind mount:
 
-    sh
 ```
     docker run --name vol-7 -it -v /root/new:/myapp ubuntu
 ```
-Cleaning Up
 
-Stop and remove all running containers:
+13. Cleaning Up
+
+14. Stop and remove all running containers:
 
 ```
 docker kill $(docker ps -q)
 docker rm $(docker ps -qa)
 ```
-Remove all volumes:
-
+15. Remove all volumes:
 
 ```
 docker volume rm $(docker volume ls -q)
