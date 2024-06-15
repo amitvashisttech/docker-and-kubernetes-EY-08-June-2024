@@ -8,7 +8,6 @@
    88  cd 
    89  kubectl cluster-info
    90  kubectl version
-   91  kubectl version --short
    92  kubectl api-versions
    93  kubectl api-resources
    
