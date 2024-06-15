@@ -12,7 +12,7 @@ kubectl exec -it etcd-master -n kube-system   -- /bin/sh
 
 ## Check the ETCD Status
 ```  
-# ETCDCTL_API=3 etcdctl --cacert="/etc/kubernetes/pki/etcd/ca.crt"  --cert="/etc/kubernetes/pki/etcd/server.crt" --key="/etc/kubernetes/pki/etcd/server.key" endpoint status  --write-out=table
+ETCDCTL_API=3 etcdctl --cacert="/etc/kubernetes/pki/etcd/ca.crt"  --cert="/etc/kubernetes/pki/etcd/server.crt" --key="/etc/kubernetes/pki/etcd/server.key" endpoint status  --write-out=table
 ```
 
 ```
