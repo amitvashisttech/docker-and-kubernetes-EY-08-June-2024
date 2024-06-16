@@ -1,0 +1,48 @@
+  124  cd 15-Ingress/
+  126  cd exp1/
+  143  kubectl  apply -f 01-nginx-ingress-controller.yaml 
+  144  kubectl  get pods -n nginx-ingress 
+  145  kubectl  get svc  -n nginx-ingress 
+  146  curl 172.31.0.100:30558
+  147  ls
+  148  kubectl get deploy 
+  149  kubectl  delete deploy --all 
+  150  kubectl  delete svc  --all 
+  151  ls
+  152  cat 02-helloworld-v1.yml 
+  153  kubectl  apply -f 02-helloworld-v1.yml 
+  154  cat 03-app-svc-deployment.yaml 
+  155  kubectl  apply -f 03-app-svc-deployment.yaml 
+  156  kubectl  get svc 
+  157  curl 172.31.0.100:30302
+  158  curl 172.31.0.100:30303
+  159  curl 172.31.0.100:30307
+  160  curl 172.31.0.100:31007
+  161  curl 172.31.0.100:31007/info
+  162  kubectl  edit svc helloworld-v1
+  163  kubectl  edit svc python-webapp-svc
+  164  kubectl  get svc 
+  165  curl 172.31.0.100:31007/info
+  166  curl 172.31.0.100:30307
+  167  curl 172.31.0.100:30558
+  169  cat 04-ingress-rules.yaml 
+  170  kubectl  apply -f 04-ingress-rules.yaml 
+  171  kubectl  get ingress 
+  172  kubectl  describe ingress helloworld-rules
+  173  kubectl  get pods -o wide 
+  174  curl 172.31.0.100:30558
+  175  curl 172.31.0.100:30558 -H 'Host: helloworld-v1.example.com' 
+  177  kubectl  delete -f 04-ingress-rules.yaml 
+  179  cat 05-ingress-rules.yaml 
+  180  kubectl apply -f 05-ingress-rules.yaml 
+  181  kubectl  get ingress 
+  182  kubectl  describe ingress helloworld-rules
+  183  curl 172.31.0.100:30558 -H 'Host: helloworld-v1.example.com' 
+  184  curl 172.31.0.100:30558 -H 'Host: python' 
+  185  curl 172.31.0.100:30558/info -H 'Host: python' 
+  187  kubectl  delete -f 05-ingress-rules.yaml 
+  189  cat 06-ingress-rules.yaml 
+  190  kubectl  apply -f 06-ingress-rules.yaml 
+  191  kubectl  describe ingress helloworld-rules
+  192  curl 172.31.0.100:30558 -H 'Host: helloworld-v1.example.com' 
+  193  curl 172.31.0.100:30558/info -H 'Host: helloworld-v1.example.com' 
