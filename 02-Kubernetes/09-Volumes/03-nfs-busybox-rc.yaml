@@ -4,15 +4,15 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: nfs-busybox-2
+  name: nfs-busybox-1
 spec:
   replicas: 3
   selector:
-    name: nfs-busybox-2
+    name: nfs-busybox-1
   template:
     metadata:
       labels:
-        name: nfs-busybox-2
+        name: nfs-busybox-1
     spec:
       containers:
       - image: busybox
@@ -31,4 +31,4 @@ spec:
       volumes:
       - name: nfs
         persistentVolumeClaim:
-          claimName: nfs
+          claimName: nfs-pvc
